@@ -88,11 +88,11 @@
         }
     }
 
-    &__description {
-        text-align: center;
-        font-weight: 400;
-        padding: 0.8rem 0 6rem 0;
-    }
+    // &__description {
+    //     text-align: center;
+    //     font-weight: 400;
+    //     padding: 0.8rem 0 6rem 0;
+    // }
 
     &__question {
         font-weight: 600;
@@ -131,6 +131,8 @@
     background-color: #ffffff;
     border-radius: 12px;
     color: #111111;
+    height: 8rem;
+    transition: border-color 0.1s ease, box-shadow 0.1s ease;
     &:hover {
         border: #914486 solid 2px;
         box-shadow: 0px 0px 10px #A9C6F9;
