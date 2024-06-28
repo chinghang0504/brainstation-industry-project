@@ -7,46 +7,91 @@ import fitness from '../assets/fitness.png'
 import vacation from '../assets/vacation.png'
 import briefcase from '../assets/briefcase.png'
 
-const data = {
-  questions: [
-    {
-      title: 'Please select your industry.',
-      description: '',
-      question: '',
-      options: [
-        { title: 'Retail', description: 'd1' },
-        { title: 'Hospitality', description: 'd2' },
-        { title: 'Healthcare', description: 'd3' },
-        { title: 'Education', description: 'd4' }
-      ],
-      answer: 0,
-      showMore: '+19 more industries',
-      showLess: 'show less',
-    },
-    {
-      title: 'xxx',
-      description: '',
-      question: '',
-      options: [
-        { title: '1', description: 'd1' },
-        { title: '2', description: 'd2' },
-        { title: '3', description: 'd3' },
-        { title: '4', description: 'd4' },
-        { title: '5', description: 'd5' },
-        { title: '6', description: 'd6' },
-        { title: '7', description: 'd7' },
-        { title: '8', description: 'd8' },
-        { title: '9', description: 'd9' },
-        { title: '10', description: 'd10' },
-        { title: '11', description: 'd11' },
-        { title: '12', description: 'd12' }
-      ],
-      answer: 0,
-      showMore: '+19 more industries',
-      showLess: 'show less',
-    }
-  ]
-};
+const questions = [
+  {
+    title: 'Business consultant',
+    description: 'I can hep design exercise programs & educate on nutrition, health & wellness',
+    question: 'What is your industry',
+    options: [
+      { title: 'Retail', description: 'Selling goods directly to consumers.' },
+      { title: 'Hospitality', description: 'Providing services to guests (e.g., hotels, restaurants).' },
+      { title: 'Healthcare', description: 'Offering medical services and health-related products.' },
+      { title: 'Education', description: 'Providing educational services and training.' },
+      { title: 'Manufacturing', description: 'Producing goods from raw materials.' },
+      { title: 'Technology', description: 'Developing and distributing tech products and services.' },
+      { title: 'Finance', description: 'Managing money and financial services.' },
+      { title: 'Other', description: 'Any other industry not listed. Specify if selected.' },
+    ],
+    answer: 0,
+    showMore: '+4 more industries',
+  },
+  {
+    title: '',
+    description: '',
+    question: 'question 2',
+    options: [
+      { title: '1', description: 'd1' },
+      { title: '2', description: 'd2' },
+      { title: '3', description: 'd3' },
+      { title: '4', description: 'd4' },
+      { title: '5', description: 'd5' },
+      { title: '6', description: 'd6' },
+      { title: '7', description: 'd7' },
+      { title: '8', description: 'd8' },
+      { title: '9', description: 'd9' },
+      { title: '10', description: 'd10' },
+      { title: '11', description: 'd11' },
+      { title: '12', description: 'd12' },
+      { title: '1', description: 'd1' },
+      { title: '2', description: 'd2' },
+      { title: '3', description: 'd3' },
+      { title: '4', description: 'd4' },
+      { title: '5', description: 'd5' },
+      { title: '6', description: 'd6' },
+      { title: '7', description: 'd7' },
+      { title: '8', description: 'd8' },
+      { title: '9', description: 'd9' },
+      { title: '10', description: 'd10' },
+      { title: '11', description: 'd11' },
+      { title: '12', description: 'd12' }
+    ],
+    answer: 0,
+    showMore: '+19 more industries',
+  },
+  {
+    title: '',
+    description: '',
+    question: 'question 3',
+    options: [
+      { title: '1', description: 'd1' },
+      { title: '2', description: 'd2' },
+      { title: '3', description: 'd3' },
+      { title: '4', description: 'd4' },
+      { title: '5', description: 'd5' },
+      { title: '6', description: 'd6' },
+      { title: '7', description: 'd7' },
+      { title: '8', description: 'd8' },
+      { title: '9', description: 'd9' },
+      { title: '10', description: 'd10' },
+      { title: '11', description: 'd11' },
+      { title: '12', description: 'd12' },
+      { title: '1', description: 'd1' },
+      { title: '2', description: 'd2' },
+      { title: '3', description: 'd3' },
+      { title: '4', description: 'd4' },
+      { title: '5', description: 'd5' },
+      { title: '6', description: 'd6' },
+      { title: '7', description: 'd7' },
+      { title: '8', description: 'd8' },
+      { title: '9', description: 'd9' },
+      { title: '10', description: 'd10' },
+      { title: '11', description: 'd11' },
+      { title: '12', description: 'd12' }
+    ],
+    answer: 0,
+    showMore: '+19 more industries',
+  }
+];
 
 function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
@@ -55,12 +100,13 @@ function Feature() {
   // Click the container
   function clickContainer(num) {
     // Compare the container number and the answer
-    if (data.questions[questionNum].answer === num) {
+    if (questions[questionNum].answer === num) {
       let newQuestionNum = questionNum + 1;
 
       // Change the new question
-      if (newQuestionNum < data.questions.length) {
+      if (newQuestionNum < questions.length) {
         setQuestionNum(newQuestionNum);
+        setShowMore(false);
       }
     }
   }
@@ -105,12 +151,12 @@ function Feature() {
 
       <div className='feature__main'>
         <div className='header'>
-          <h1 className='header__title'>{data.questions[questionNum].title}</h1>
-          <p className='header__description'>{data.questions[questionNum].description}</p>
-          <p className='header__question'>{data.questions[questionNum].question}</p>
+          <h1 className='header__title'>{questions[questionNum].title}</h1>
+          <p className='header__description'>{questions[questionNum].description}</p>
+          <p className='header__question'>{questions[questionNum].question}</p>
         </div>
         <div className='main'>
-          { !showMore && data.questions[questionNum].options.slice(0, 4).map((question, index) => {
+          {!showMore && questions[questionNum].options.slice(0, 4).map((question, index) => {
             return (
               <div className='main-container button' onClick={() => clickContainer(index)}>
                 <p className='main-container__title'>{question.title}</p>
@@ -118,7 +164,7 @@ function Feature() {
               </div>
             )
           })}
-          {showMore && data.questions[questionNum].options.map((question, index) => {
+          {showMore && questions[questionNum].options.map((question, index) => {
             return (
               <div className='main-container button' onClick={() => clickContainer(index)}>
                 <p className='main-container__title'>{question.title}</p>
@@ -126,8 +172,7 @@ function Feature() {
               </div>
             )
           })}
-          <p className='main__show-more button__more' onClick={clickShowMore}>{!showMore && data.questions[questionNum].showMore}</p>
-          <p className='main__show-less button__more' onClick={clickShowMore}>{showMore && data.questions[questionNum].showLess}</p>
+          <p className='main__show-more button__more' onClick={clickShowMore}>{!showMore && questions[questionNum].showMore}</p>
         </div>
       </div>
     </>
