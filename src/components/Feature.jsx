@@ -106,7 +106,7 @@ function Feature() {
 
       <div className='feature__main'>
         <div className='header'>
-          <h1 className='header__title'><img className="header__title-logo" src={logoCo} alt="LogoIcon" /> {data.questions[questionNum].title}</h1>
+          <h1 className='header__title'><img className="header__title-logo" src={briefcase} alt="LogoIcon" /> {data.questions[questionNum].title}</h1>
           <p className='header__description'>{data.questions[questionNum].description}</p>
           <p className='header__question'>{data.questions[questionNum].question}</p>
         </div>
