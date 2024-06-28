@@ -1,0 +1,36 @@
+
+
+.header {
+
+    &__title {
+        text-align: center;
+    }
+
+    &__description {
+        text-align: center;
+    }
+
+    &__question {
+        
+    }
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__show-more {
+        cursor: pointer;
+    }
+}
+
+.main-container {
+    width: calc(25% - 16px);
+    border-radius: 8px;
+    // border: 1px solid black;
+    cursor: pointer;
+
+    &__title {
+        font-weight: 700;
+    }
+}
