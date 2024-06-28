@@ -1,0 +1,10 @@
+.BasePage {
+    width: 100%;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    &__img{
+        width: 100%;
+    }
+}
