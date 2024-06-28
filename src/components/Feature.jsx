@@ -11,8 +11,12 @@ function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
 
   function clickQuestion() {
-    setQuestionNum(questionNum + 1);
-    console.log('AAA');
+    let newQuestionNum = questionNum + 1;
+    if (newQuestionNum === data.questions.length) {
+      newQuestionNum = 0;
+    }
+
+    setQuestionNum(newQuestionNum);
   }
 
   const data = {
@@ -20,30 +24,32 @@ function Feature() {
       {
         title: 'Please select your industry.',
         description: '',
+        question: '',
         options: [
-          { title: 'Retail', description: '' },
-          { title: 'Hospitality', description: '' },
-          { title: 'Healthcare', description: '' },
-          { title: 'Education', description: '' }
+          { title: 'Retail', description: 'd1' },
+          { title: 'Hospitality', description: 'd2' },
+          { title: 'Healthcare', description: 'd3' },
+          { title: 'Education', description: 'd4' }
         ],
         showMore: ''
       },
       {
         title: 'xxx',
         description: '',
+        question: '',
         options: [
-          { title: '1', description: '' },
-          { title: '2', description: '' },
-          { title: '3', description: '' },
-          { title: '4', description: '' },
-          { title: '5', description: '' },
-          { title: '6', description: '' },
-          { title: '7', description: '' },
-          { title: '8', description: '' },
-          { title: '9', description: '' },
-          { title: '10', description: '' },
-          { title: '11', description: '' },
-          { title: '12', description: '' }
+          { title: '1', description: 'd1' },
+          { title: '2', description: 'd2' },
+          { title: '3', description: 'd3' },
+          { title: '4', description: 'd4' },
+          { title: '5', description: 'd5' },
+          { title: '6', description: 'd6' },
+          { title: '7', description: 'd7' },
+          { title: '8', description: 'd8' },
+          { title: '9', description: 'd9' },
+          { title: '10', description: 'd10' },
+          { title: '11', description: 'd11' },
+          { title: '12', description: 'd12' }
         ],
         showMore: ''
       }
@@ -87,6 +93,7 @@ function Feature() {
         <div className='header'>
           <h1 className='header__title'>{data.questions[questionNum].title}</h1>
           <p className='header__description'>{data.questions[questionNum].description}</p>
+          <p className='header__question'>{data.questions[questionNum].question}</p>
         </div>
         <div className='main'>
           {data.questions[questionNum].options.map(question => {
