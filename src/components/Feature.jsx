@@ -6,6 +6,7 @@ import designer from '../assets/designer.png'
 import fitness from '../assets/fitness.png'
 import vacation from '../assets/vacation.png'
 import briefcase from '../assets/briefcase.png'
+import Question from './Question/Question'
 
 const questions = [
   {
@@ -95,7 +96,6 @@ const questions = [
 
 function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
-  const [showMore, setShowMore] = useState(false);
 
   // Click the container
   function clickContainer(num) {
@@ -106,14 +106,8 @@ function Feature() {
       // Change the new question
       if (newQuestionNum < questions.length) {
         setQuestionNum(newQuestionNum);
-        setShowMore(false);
       }
     }
-  }
-
-  // Click the show more
-  function clickShowMore() {
-    setShowMore(!showMore);
   }
 
   return (
@@ -150,30 +144,11 @@ function Feature() {
       </div>
 
       <div className='feature__main'>
-        <div className='header'>
-          <h1 className='header__title'>{questions[questionNum].title}</h1>
-          <p className='header__description'>{questions[questionNum].description}</p>
-          <p className='header__question'>{questions[questionNum].question}</p>
-        </div>
-        <div className='main'>
-          {!showMore && questions[questionNum].options.slice(0, 4).map((question, index) => {
-            return (
-              <div className='main-container button' onClick={() => clickContainer(index)}>
-                <p className='main-container__title'>{question.title}</p>
-                <p className='main-container__description'>{question.description}</p>
-              </div>
-            )
-          })}
-          {showMore && questions[questionNum].options.map((question, index) => {
-            return (
-              <div className='main-container button' onClick={() => clickContainer(index)}>
-                <p className='main-container__title'>{question.title}</p>
-                <p className='main-container__description'>{question.description}</p>
-              </div>
-            )
-          })}
-          <p className='main__show-more button__more' onClick={clickShowMore}>{!showMore && questions[questionNum].showMore}</p>
-        </div>
+        {questions.map((question, index) => {
+          return (
+            <Question key={index} question={question} clickContainer={clickContainer} style={{display: index <= questionNum ? 'block' : 'none'}} />
+          )
+        })}
       </div>
     </>
   )
