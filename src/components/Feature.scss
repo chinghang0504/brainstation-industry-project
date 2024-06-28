@@ -67,3 +67,29 @@
         overflow-y: auto;
     }
 }
+
+
+
+
+
+.header {
+
+    &__title {
+        text-align: center;
+    }
+
+    &__description {
+        text-align: center;
+    }
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-container {
+    width: 25%;
+    border-radius: 8px;
+    border: 1px solid black;
+}
