@@ -70,7 +70,10 @@ function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
 
   // Click the container
-  function clickContainer(num) {
+  function clickContainer(event, num) {
+    console.log(event.target);
+    event.target.classList.toggle("active");
+
     // Compare the container number and the answer
     if (questions[questionNum].answer === num) {
       let newQuestionNum = questionNum + 1;

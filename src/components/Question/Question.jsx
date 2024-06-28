@@ -22,7 +22,7 @@ function Question(props) {
             <div className='main'>
                 {!showMore && question.options.slice(0, 4).map((question, index) => {
                     return (
-                        <div key={index} className='main-container button' onClick={() => clickContainer(index)}>
+                        <div key={index} className='main-container button' onClick={(event) => clickContainer(event, index)}>
                             <p className='main-container__title'>{question.title}</p>
                             <p className='main-container__description'>{question.description}</p>
                         </div>
@@ -30,7 +30,7 @@ function Question(props) {
                 })}
                 {showMore && question.options.map((question, index) => {
                     return (
-                        <div key={index} className='main-container button' onClick={() => clickContainer(index)}>
+                        <div key={index} className='main-container button' onClick={(event) => clickContainer(event, index)}>
                             <p className='main-container__title'>{question.title}</p>
                             <p className='main-container__description'>{question.description}</p>
                         </div>
