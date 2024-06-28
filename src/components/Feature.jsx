@@ -71,8 +71,12 @@ function Feature() {
 
   // Click the container
   function clickContainer(event, num) {
-    console.log(event.target);
-    event.target.classList.toggle("active");
+    const target = event.target;
+    if(target.classList.contains("notActive")) {
+      target.parentElement.classList.toggle("active");
+    } else {
+      target.classList.toggle("active");
+    }
 
     // Compare the container number and the answer
     if (questions[questionNum].answer === num) {
@@ -117,6 +121,7 @@ function Feature() {
           <p className="feature__desc">Business consultant</p>
         </div>
       </div>
+
 
       <div className='feature__main'>
         {questions.map((question, index) => {
