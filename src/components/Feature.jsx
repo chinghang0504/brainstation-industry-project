@@ -7,8 +7,50 @@ import fitness from '../assets/fitness.png'
 import vacation from '../assets/vacation.png'
 import briefcase from '../assets/briefcase.png'
 
+const data = {
+  questions: [
+    {
+      title: 'Please select your industry.',
+      description: '',
+      question: '',
+      options: [
+        { title: 'Retail', description: 'd1' },
+        { title: 'Hospitality', description: 'd2' },
+        { title: 'Healthcare', description: 'd3' },
+        { title: 'Education', description: 'd4' }
+      ],
+      answer: 0,
+      showMore: '+19 more industries',
+      showLess: 'show less',
+    },
+    {
+      title: 'xxx',
+      description: '',
+      question: '',
+      options: [
+        { title: '1', description: 'd1' },
+        { title: '2', description: 'd2' },
+        { title: '3', description: 'd3' },
+        { title: '4', description: 'd4' },
+        { title: '5', description: 'd5' },
+        { title: '6', description: 'd6' },
+        { title: '7', description: 'd7' },
+        { title: '8', description: 'd8' },
+        { title: '9', description: 'd9' },
+        { title: '10', description: 'd10' },
+        { title: '11', description: 'd11' },
+        { title: '12', description: 'd12' }
+      ],
+      answer: 0,
+      showMore: '+19 more industries',
+      showLess: 'show less',
+    }
+  ]
+};
+
 function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
+  const [showMore, setShowMore] = useState(false);
 
   // Click the container
   function clickContainer(num) {
@@ -23,45 +65,9 @@ function Feature() {
     }
   }
 
-  const data = {
-    questions: [
-      {
-        title: 'Please select your industry.',
-        description: '',
-        question: '',
-        options: [
-          { title: 'Retail', description: 'd1' },
-          { title: 'Hospitality', description: 'd2' },
-          { title: 'Healthcare', description: 'd3' },
-          { title: 'Education', description: 'd4' }
-        ],
-        answer: 0,
-        showMore: '',
-      },
-      {
-        title: 'xxx',
-        description: '',
-        question: '',
-        options: [
-          { title: '1', description: 'd1' },
-          { title: '2', description: 'd2' },
-          { title: '3', description: 'd3' },
-          { title: '4', description: 'd4' }
-        ],
-        answer: 0,
-        showMore: '',
-        moreOptions: [
-          { title: '5', description: 'd5' },
-          { title: '6', description: 'd6' },
-          { title: '7', description: 'd7' },
-          { title: '8', description: 'd8' },
-          { title: '9', description: 'd9' },
-          { title: '10', description: 'd10' },
-          { title: '11', description: 'd11' },
-          { title: '12', description: 'd12' }
-        ]
-      }
-    ]
+  // Click the show more
+  function clickShowMore() {
+    setShowMore(!showMore);
   }
 
   return (
@@ -104,7 +110,7 @@ function Feature() {
           <p className='header__question'>{data.questions[questionNum].question}</p>
         </div>
         <div className='main'>
-          {data.questions[questionNum].options.map((question, index) => {
+          { !showMore && data.questions[questionNum].options.slice(0, 4).map((question, index) => {
             return (
               <div className='main-container' onClick={() => clickContainer(index)}>
                 <p className='main-container__title'>{question.title}</p>
@@ -112,6 +118,16 @@ function Feature() {
               </div>
             )
           })}
+          {showMore && data.questions[questionNum].options.map((question, index) => {
+            return (
+              <div className='main-container' onClick={() => clickContainer(index)}>
+                <p className='main-container__title'>{question.title}</p>
+                <p className='main-container__description'>{question.description}</p>
+              </div>
+            )
+          })}
+          <p className='main__show-more' onClick={clickShowMore}>{!showMore && data.questions[questionNum].showMore}</p>
+          <p className='main__show-less' onClick={clickShowMore}>{showMore && data.questions[questionNum].showLess}</p>
         </div>
       </div>
     </>

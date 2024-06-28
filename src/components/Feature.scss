@@ -90,6 +90,10 @@
 .main {
     display: flex;
     flex-wrap: wrap;
+
+    &__show-more {
+        cursor: pointer;
+    }
 }
 
 .main-container {
