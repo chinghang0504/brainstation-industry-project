@@ -6,13 +6,14 @@ import designer from '../assets/designer.png'
 import fitness from '../assets/fitness.png'
 import vacation from '../assets/vacation.png'
 import briefcase from '../assets/briefcase.png'
+import logoCo from '../assets/Copilotlogo.svg'
 
 const data = {
   questions: [
     {
-      title: 'Please select your industry.',
-      description: '',
-      question: '',
+      title: 'Business consultant',
+      description: 'I can help resolve pain points in your business',
+      question: 'What is your industry?',
       options: [
         { title: 'Retail', description: 'd1' },
         { title: 'Hospitality', description: 'd2' },
@@ -72,9 +73,9 @@ function Feature() {
 
   return (
     <>
-      <div className='feature'>
-        <input className='feature__input' type="text" placeholder='Ask me anything...' />
-      </div>
+      <label htmlFor="textBox" className='feature'>
+        <input id='textBox' className='feature__input' type="text" placeholder='Ask me anything...' />
+      </label>
 
       <div className='feature__side'>
         <div className="feature__side-elem">
@@ -105,7 +106,7 @@ function Feature() {
 
       <div className='feature__main'>
         <div className='header'>
-          <h1 className='header__title'>{data.questions[questionNum].title}</h1>
+          <h1 className='header__title'><img className="header__title-logo" src={logoCo} alt="LogoIcon" /> {data.questions[questionNum].title}</h1>
           <p className='header__description'>{data.questions[questionNum].description}</p>
           <p className='header__question'>{data.questions[questionNum].question}</p>
         </div>
