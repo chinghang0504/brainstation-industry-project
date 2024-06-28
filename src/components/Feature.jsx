@@ -10,13 +10,17 @@ import briefcase from '../assets/briefcase.png'
 function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
 
-  function clickQuestion() {
-    let newQuestionNum = questionNum + 1;
-    if (newQuestionNum === data.questions.length) {
-      newQuestionNum = 0;
-    }
+  // Click the container
+  function clickContainer(num) {
+    // Compare the container number and the answer
+    if (data.questions[questionNum].answer === num) {
+      let newQuestionNum = questionNum + 1;
 
-    setQuestionNum(newQuestionNum);
+      // Change the new question
+      if (newQuestionNum < data.questions.length) {
+        setQuestionNum(newQuestionNum);
+      }
+    }
   }
 
   const data = {
@@ -31,7 +35,8 @@ function Feature() {
           { title: 'Healthcare', description: 'd3' },
           { title: 'Education', description: 'd4' }
         ],
-        showMore: ''
+        answer: 0,
+        showMore: '',
       },
       {
         title: 'xxx',
@@ -41,7 +46,11 @@ function Feature() {
           { title: '1', description: 'd1' },
           { title: '2', description: 'd2' },
           { title: '3', description: 'd3' },
-          { title: '4', description: 'd4' },
+          { title: '4', description: 'd4' }
+        ],
+        answer: 0,
+        showMore: '',
+        moreOptions: [
           { title: '5', description: 'd5' },
           { title: '6', description: 'd6' },
           { title: '7', description: 'd7' },
@@ -50,8 +59,7 @@ function Feature() {
           { title: '10', description: 'd10' },
           { title: '11', description: 'd11' },
           { title: '12', description: 'd12' }
-        ],
-        showMore: ''
+        ]
       }
     ]
   }
@@ -89,16 +97,16 @@ function Feature() {
         </div>
       </div>
 
-      <div className='feature__main' onClick={clickQuestion}>
+      <div className='feature__main'>
         <div className='header'>
           <h1 className='header__title'>{data.questions[questionNum].title}</h1>
           <p className='header__description'>{data.questions[questionNum].description}</p>
           <p className='header__question'>{data.questions[questionNum].question}</p>
         </div>
         <div className='main'>
-          {data.questions[questionNum].options.map(question => {
+          {data.questions[questionNum].options.map((question, index) => {
             return (
-              <div className='main-container'>
+              <div className='main-container' onClick={() => clickContainer(index)}>
                 <p className='main-container__title'>{question.title}</p>
                 <p className='main-container__description'>{question.description}</p>
               </div>
