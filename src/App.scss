@@ -1,0 +1,20 @@
+.header {
+
+    &__title {
+        text-align: center;
+    }
+
+    &__description {
+        text-align: center;
+    }
+}
+
+.main {
+    display: flex;
+}
+
+.main-container {
+    width: 25%;
+    border-radius: 8px;
+    border: 1px solid black;
+}

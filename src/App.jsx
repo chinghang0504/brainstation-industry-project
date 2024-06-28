@@ -1,33 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [questionNum, setQuestionNum] = useState(0);
+
+  const data = {
+    questions: [
+      {
+        title: 'Please select your industry.',
+        description: '',
+        options: [
+          { title: 'Retail', description: '' },
+          { title: 'Hospitality', description: '' },
+          { title: 'Healthcare', description: '' },
+          { title: 'Education', description: '' }
+        ],
+        showMore: ''
+      }
+    ]
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='header'>
+      <h1 className='header__title'>{data.questions[questionNum].title}</h1>
+      <p className='header__description'>{data.questions[questionNum].description}</p>
+    </div>
+    <div className='main'>
+      <div className='main-container'>
+        <p className='main-container__title'>{data.questions[questionNum].options[0].title}</p>
+        <p className='main-container__description'>{data.questions[questionNum].options[0].description}</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='main-container'>
+        <p className='main-container__title'>{data.questions[questionNum].options[1].title}</p>
+        <p className='main-container__description'>{data.questions[questionNum].options[1].description}</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className='main-container'>
+        <p className='main-container__title'>{data.questions[questionNum].options[2].title}</p>
+        <p className='main-container__description'>{data.questions[questionNum].options[2].description}</p>
+      </div>
+      <div className='main-container'>
+        <p className='main-container__title'>{data.questions[questionNum].options[3].title}</p>
+        <p className='main-container__description'>{data.questions[questionNum].options[3].description}</p>
+      </div>
+    </div>
     </>
   )
 }
