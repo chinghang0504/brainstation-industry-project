@@ -71,9 +71,10 @@ function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
   const imageRef = useRef();
   const [showResult, setShowResult] = useState(false);
+  const containerRef = useRef();
 
   // Click the container
-  function clickContainer(event, num) {
+  async function clickContainer(event, num) {
     const target = event.target;
     if(target.classList.contains("notActive")) {
       target.parentElement.classList.toggle("active");
@@ -90,6 +91,17 @@ function Feature() {
         setQuestionNum(newQuestionNum);
       } else if (newQuestionNum === questions.length) {
         setShowResult(true);
+      }
+
+      const sleep = ms => new Promise(r => setTimeout(r, ms));
+      await sleep(200);
+      if (newQuestionNum === 3) {
+        containerRef.current.scrollTop = containerRef.current.scrollHeight - 500;
+      } else if (newQuestionNum === 4) {
+        containerRef.current.scrollTop = containerRef.current.scrollHeight - 450;
+      }
+      else {
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
       }
     }
   }
@@ -128,7 +140,7 @@ function Feature() {
       </div>
 
 
-      <div className='feature__main'>
+      <div className='feature__main' ref={containerRef}>
         {questions.map((question, index) => {
           return (
             <Question key={index} question={question} clickContainer={clickContainer} style={{display: index <= questionNum ? 'block' : 'none'}} />
