@@ -112,7 +112,7 @@ function Feature() {
         <div className='main'>
           { !showMore && data.questions[questionNum].options.slice(0, 4).map((question, index) => {
             return (
-              <div className='main-container' onClick={() => clickContainer(index)}>
+              <div className='main-container button' onClick={() => clickContainer(index)}>
                 <p className='main-container__title'>{question.title}</p>
                 <p className='main-container__description'>{question.description}</p>
               </div>
@@ -120,14 +120,14 @@ function Feature() {
           })}
           {showMore && data.questions[questionNum].options.map((question, index) => {
             return (
-              <div className='main-container' onClick={() => clickContainer(index)}>
+              <div className='main-container button' onClick={() => clickContainer(index)}>
                 <p className='main-container__title'>{question.title}</p>
                 <p className='main-container__description'>{question.description}</p>
               </div>
             )
           })}
-          <p className='main__show-more' onClick={clickShowMore}>{!showMore && data.questions[questionNum].showMore}</p>
-          <p className='main__show-less' onClick={clickShowMore}>{showMore && data.questions[questionNum].showLess}</p>
+          <p className='main__show-more button__more' onClick={clickShowMore}>{!showMore && data.questions[questionNum].showMore}</p>
+          <p className='main__show-less button__more' onClick={clickShowMore}>{showMore && data.questions[questionNum].showLess}</p>
         </div>
       </div>
     </>
