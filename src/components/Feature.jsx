@@ -40,11 +40,6 @@ function Feature() {
           <p className="feature__desc">Business consultant</p>
         </div>
       </div>
-
-      <div className="feature__main">
-        div. 
-      </div>
-
     </>
   )
 }
