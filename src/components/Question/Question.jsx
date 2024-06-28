@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Question.scss';
+import briefcase from '../../assets/briefcase.png'
 
 function Question(props) {
     const question = props.question;
@@ -23,16 +24,16 @@ function Question(props) {
                 {!showMore && question.options.slice(0, 4).map((question, index) => {
                     return (
                         <div key={index} className='main-container button' onClick={(event) => clickContainer(event, index)}>
-                            <p className='main-container__title'>{question.title}</p>
-                            <p className='main-container__description'>{question.description}</p>
+                            <p className='main-container__title notActive'>{question.title}</p>
+                            <p className='main-container__description notActive'>{question.description}</p>
                         </div>
                     )
                 })}
                 {showMore && question.options.map((question, index) => {
                     return (
                         <div key={index} className='main-container button' onClick={(event) => clickContainer(event, index)}>
-                            <p className='main-container__title'>{question.title}</p>
-                            <p className='main-container__description'>{question.description}</p>
+                            <p className='main-container__title notActive'>{question.title}</p>
+                            <p className='main-container__description notActive'>{question.description}</p>
                         </div>
                     )
                 })}
