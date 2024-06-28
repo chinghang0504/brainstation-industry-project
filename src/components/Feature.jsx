@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './Feature.scss'
 import cooking from '../assets/cooking.png'
 import copilot from '../assets/copilot.png'
@@ -7,6 +7,7 @@ import fitness from '../assets/fitness.png'
 import vacation from '../assets/vacation.png'
 import briefcase from '../assets/briefcase.png'
 import Question from './Question/Question'
+import ResultImage from '../assets/response.png'
 
 const questions = [
   {
@@ -68,6 +69,8 @@ const questions = [
 
 function Feature() {
   const [questionNum, setQuestionNum] = useState(0);
+  const imageRef = useRef();
+  const [showResult, setShowResult] = useState(false);
 
   // Click the container
   function clickContainer(event, num) {
@@ -85,6 +88,8 @@ function Feature() {
       // Change the new question
       if (newQuestionNum < questions.length) {
         setQuestionNum(newQuestionNum);
+      } else if (newQuestionNum === questions.length) {
+        setShowResult(true);
       }
     }
   }
@@ -129,7 +134,9 @@ function Feature() {
             <Question key={index} question={question} clickContainer={clickContainer} style={{display: index <= questionNum ? 'block' : 'none'}} />
           )
         })}
+        <img className='result-image' src={ResultImage} ref={imageRef} style={{display: showResult ? 'block' : 'none'}} />
       </div>
+      
     </>
   )
 }

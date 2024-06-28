@@ -182,14 +182,11 @@
 }
 
 .notActive {
- border-color: none !important;
- box-shadow: none !important;
+ border-color: none;
+ box-shadow: none;
 }
 
-.big-img {
-        position: absolute;
-        left: 25rem;
-        top: 6.8rem;
-        height: 2rem;
-        z-index: 2;
+.result-image {
+    width: 100%;
+    margin-top: 200px;
 }
