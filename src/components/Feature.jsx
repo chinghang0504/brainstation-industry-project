@@ -62,7 +62,7 @@ const questions = [
       { title: '', description: '“How can I develop an effective social media marketing strategy for my [industry] business, focusing on platforms like [Facebook] to increase brand awareness and customer engagement?”' },
       { title: '', description: '“How can I optimize my [type of retail] store’s website to increase conversions and reduce bounce rates?”' },
     ],
-    answer: 0,
+    answer: 3,
     showMore: '+ Show More',
   }
 ];
